@@ -24,14 +24,7 @@ const Add = (props) => {
 				<input placeholder="Quality of Sleep" type="number" value={sleep.sleepQuality} name="sleepQuality" onChange={handleChange}></input>
 				<input type="submit"></input>
 			</form>
-
-
-
 		)
-
-
 }
-
-
 
 export default Add

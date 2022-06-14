@@ -3,11 +3,7 @@ import axios from 'axios'
 import Add from './components/Add'
 import Edit from './components/Edit'
 
-
-
 const App = () => {
-
-
   const [sleepData, setSleepData] = useState([])
 
   const getSleepData = () => {
@@ -35,8 +31,6 @@ const App = () => {
   })
 }
 
-
-
 const handleDelete = (deletedSleep) => {
   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
   deletedSleep.id)
@@ -48,7 +42,6 @@ const handleDelete = (deletedSleep) => {
   useEffect(() => {
     getSleepData()
   }, [])
-
 
   return (
     <>
@@ -66,14 +59,10 @@ const handleDelete = (deletedSleep) => {
             <h3>Quality of Sleep:{sleep.sleepQuality}</h3>
             <Edit handleUpdate={handleUpdate} sleep={sleep}/>
             <button onClick={() => {handleDelete(sleep
-        )}}>
-        Delete Sleep Record
-        </button>
+            )}}>
+            Delete Sleep Record
+            </button>
             </div>
-
-
-
-
           )
         })}
     </>
