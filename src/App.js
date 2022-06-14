@@ -9,6 +9,9 @@ import NewUser from './components/NewUser'
 const App = () => {
   const [sleepData, setSleepData] = useState([])
   const [newUser, setNewUser] = useState([])
+  const [user, setUser] = useState([])
+
+// ========GET SLEEP RECORDS=======
 
   const getSleepData = () => {
     axios
@@ -19,18 +22,38 @@ const App = () => {
     .catch((error) => console.error(error))
   }
 
+// ========GET USERS=======
+
+  const getUser = () => {
+    axios
+    .get('https://damp-ocean-33580.herokuapp.com/api/useraccount')
+    .then(response => setUser(response.data),
+    (err) => console.error(err)
+  )
+    .catch((error) => console.error(error))
+  }
+
+// ========CREATE NEW SLEEP RECORD=======
+
   const handleCreate = (addSleep) => {
   axios.post('https://damp-ocean-33580.herokuapp.com/api/sleepData', addSleep)
   .then(response => {
     setSleepData([...sleepData, response.data])
   })
 }
+
+
+// ========CREATE NEW USER=======
+
   const handleNewUser = (addUser) => {
   axios.post('https://damp-ocean-33580.herokuapp.com/api/useraccount', addUser)
   .then(response => {
     setNewUser([...newUser, response.data])
   })
 }
+
+
+// ========EDIT  SLEEP RECORD=======
 
   const handleUpdate = (editSleep) => {
   axios.put('https://damp-ocean-33580.herokuapp.com/api/sleepData/' + editSleep.id, editSleep)
@@ -41,6 +64,19 @@ const App = () => {
   })
 }
 
+// ========LOGIN=======
+
+  const handleLogin = (findUser) => {
+  axios.put('https://damp-ocean-33580.herokuapp.com/api/useraccount/login' , findUser)
+  .then((response) => {
+    setUser(findUser.username)
+    console.log(response.data)
+    console.log(user)
+  })
+}
+
+// ========DELETE SLEEP RECORD=======
+
 const handleDelete = (deletedSleep) => {
   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
   deletedSleep.id)
@@ -49,16 +85,23 @@ const handleDelete = (deletedSleep) => {
   })
 }
 
+
+// ========USE EFFECT=======
+
   useEffect(() => {
     getSleepData()
+    getUser()
   }, [])
+
+
+
 
   return (
     <>
         <h1>Sleep Tracker</h1>
         <h2>Add a New Sleep Record</h2>
         <NewUser handleNewUser={handleNewUser}/>
-        <Login/>
+        <Login handleLogin={handleLogin}/>
         <Add handleCreate={handleCreate}/>
         {sleepData.map((sleep) => {
           return(

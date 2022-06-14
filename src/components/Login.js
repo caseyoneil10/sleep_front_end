@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react'
 
-const Login = () => {
+const Login = (props) => {
+	const [user, setUser] = useState({...props.user})
+
+	const handleChange = (event) => {
+		setUser({...user, [event.target.name]: event.target.value})
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault()
+		props.handleLogin(user)
+	}
 
 	return (
 
-			<form>
-				<input placeholder="Username"></input>
-				<input placeholder="Password"></input>
+			<form onSubmit={handleSubmit}>
+				<input placeholder="Username" type="text" name="username" value={user.username} onChange={handleChange}></input>
+				<input placeholder="Password" type="password" name="password" value={user.password} onChange={handleChange}></input>
 				<input type="submit"></input>
 			</form>
 
