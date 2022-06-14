@@ -19,7 +19,7 @@ const App = () => {
   }
 
   const handleCreate = (addSleep) => {
-  axios.post('http://localhost:8000/api/sleedData', addSleep)
+  axios.post('https://damp-ocean-33580.herokuapp.com/api/sleepData', addSleep)
   .then(response => {
     setSleepData([...sleepData, response.data])
   })

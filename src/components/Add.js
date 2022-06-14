@@ -16,12 +16,13 @@ const Add = (props) => {
 	}
 		return (
 			<form onSubmit={handleSubmit}>
-			<input placeholder="Name" type="text" value={sleep.name} name="name" onChange={handleChange}></input>
-			<input placeholder="Age" type="number" value={sleep.age} name="age" onChange={handleChange}></input>
-			<input placeholder="Date" type="date" value={sleep.date} name="date" onChange={handleChange}></input>
-			<input placeholder="Hours Slept" type="number" value={sleep.hoursSlept} name="hoursSlept" onChange={handleChange}></input>
-			<input placeholder="Routine" type="text" value={sleep.routine} name="routine" onChange={handleChange}></input>
-			<input placeholder="Quality of Sleep" type="number" value={sleep.sleepQuality} name="sleepQuality" onChange={handleChange}></input>
+				<input placeholder="Name" type="text" value={sleep.name} name="name" onChange={handleChange}></input>
+				<input placeholder="Age" type="number" value={sleep.age} name="age" onChange={handleChange}></input>
+				<input placeholder="Date" type="date" value={sleep.date} name="date" onChange={handleChange}></input>
+				<input placeholder="Hours Slept" type="number" value={sleep.hoursSlept} name="hoursSlept" onChange={handleChange}></input>
+				<input placeholder="Routine" type="text" value={sleep.routine} name="routine" onChange={handleChange}></input>
+				<input placeholder="Quality of Sleep" type="number" value={sleep.sleepQuality} name="sleepQuality" onChange={handleChange}></input>
+				<input type="submit"></input>
 			</form>
 
 
