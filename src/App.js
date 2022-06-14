@@ -69,12 +69,9 @@ const App = () => {
   const handleLogin = (findUser) => {
   axios.put('https://damp-ocean-33580.herokuapp.com/api/useraccount/login' , findUser)
   .then((response) => {
-    setUser(findUser.username)
-    console.log(response.data)
-    console.log(user)
+    setUser(response.data)
   })
 }
-
 // ========DELETE SLEEP RECORD=======
 
 const handleDelete = (deletedSleep) => {
