@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Add from './components/Add'
 import Edit from './components/Edit'
-import bcrypt from 'bcrypt'
+import Login from './components/Login'
+import NewUser from './components/NewUser'
 
 
 const App = () => {
   const [sleepData, setSleepData] = useState([])
+  const [newUser, setNewUser] = useState([])
 
   const getSleepData = () => {
     axios
@@ -21,6 +23,12 @@ const App = () => {
   axios.post('https://damp-ocean-33580.herokuapp.com/api/sleepData', addSleep)
   .then(response => {
     setSleepData([...sleepData, response.data])
+  })
+}
+  const handleNewUser = (addUser) => {
+  axios.post('https://damp-ocean-33580.herokuapp.com/api/useraccount', addUser)
+  .then(response => {
+    setNewUser([...newUser, response.data])
   })
 }
 
@@ -49,6 +57,8 @@ const handleDelete = (deletedSleep) => {
     <>
         <h1>Sleep Tracker</h1>
         <h2>Add a New Sleep Record</h2>
+        <NewUser handleNewUser={handleNewUser}/>
+        <Login/>
         <Add handleCreate={handleCreate}/>
         {sleepData.map((sleep) => {
           return(
