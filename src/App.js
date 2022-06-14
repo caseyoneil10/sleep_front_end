@@ -25,6 +25,14 @@ const App = () => {
   })
 }
 
+const handleDelete = (deletedSleep) => {
+  axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
+  deletedSleep.id)
+  .then((response) => {
+    setSleepData(sleepData.filter(sleep => sleep.id !== deletedSleep.id))
+  })
+}
+
   useEffect(() => {
     getSleepData()
   }, [])
@@ -44,6 +52,10 @@ const App = () => {
             <h3>Hours Slept:{sleep.hoursSlept}</h3>
             <h3>Routine:{sleep.routine}</h3>
             <h3>Quality of Sleep:{sleep.sleepQuality}</h3>
+            <button onClick={() => {handleDelete(sleep
+        )}}>
+        Delete Sleep Record
+        </button>
             </div>
 
 
