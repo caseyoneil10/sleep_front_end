@@ -13,7 +13,6 @@ const Add = (props) => {
 			event.preventDefault()
 			props.handleCreate(sleep)
 			setSleep({name: '', age: '', date: '', hoursSlept: '', routine: '', sleepQuality: '', notes: '', username: props.user.username})
-
 	}
 		return (
 			<form onSubmit={handleSubmit}>

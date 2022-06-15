@@ -5,7 +5,6 @@ import Edit from './components/Edit'
 import Login from './components/Login'
 import NewUser from './components/NewUser'
 
-
 const App = () => {
   const [sleepData, setSleepData] = useState([])
   const [newUser, setNewUser] = useState([])
@@ -21,17 +20,6 @@ const App = () => {
   )
     .catch((error) => console.error(error))
   }
-
-// ========GET USERS=======
-
-  // const getUser = () => {
-  //   axios
-  //   .get('https://damp-ocean-33580.herokuapp.com/api/useraccount')
-  //   .then(response => setUser(response.data),
-  //   (err) => console.error(err)
-  // )
-  //   .catch((error) => console.error(error))
-  // }
 
 // ========CREATE NEW SLEEP RECORD=======
 
