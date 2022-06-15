@@ -70,6 +70,7 @@ const App = () => {
   axios.put('https://damp-ocean-33580.herokuapp.com/api/useraccount/login' , findUser)
   .then((response) => {
     setUser(response.data)
+    console.log(response.data)
   })
 }
 // ========DELETE SLEEP RECORD=======
@@ -87,7 +88,7 @@ const handleDelete = (deletedSleep) => {
 
   useEffect(() => {
     getSleepData()
-    getUser()
+
   }, [])
 
 
@@ -96,13 +97,14 @@ const handleDelete = (deletedSleep) => {
   return (
     <>
         <h1>Sleep Tracker</h1>
+        <h2>Welcome to your sleep tracker {user.username}</h2>
         <h2>Add a New Sleep Record</h2>
         <NewUser handleNewUser={handleNewUser}/>
         <Login handleLogin={handleLogin}/>
-        <Add handleCreate={handleCreate}/>
+        <Add user={user} handleCreate={handleCreate}/>
         {sleepData.map((sleep) => {
           return(
-            <div>
+            <div key={sleep.id}>
             <h3>Name:{sleep.name}</h3>
             <h3>Age:{sleep.age}</h3>
             <h3>Date:{sleep.date}</h3>
