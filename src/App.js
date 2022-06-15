@@ -24,14 +24,14 @@ const App = () => {
 
 // ========GET USERS=======
 
-  const getUser = () => {
-    axios
-    .get('https://damp-ocean-33580.herokuapp.com/api/useraccount')
-    .then(response => setUser(response.data),
-    (err) => console.error(err)
-  )
-    .catch((error) => console.error(error))
-  }
+  // const getUser = () => {
+  //   axios
+  //   .get('https://damp-ocean-33580.herokuapp.com/api/useraccount')
+  //   .then(response => setUser(response.data),
+  //   (err) => console.error(err)
+  // )
+  //   .catch((error) => console.error(error))
+  // }
 
 // ========CREATE NEW SLEEP RECORD=======
 
@@ -39,6 +39,7 @@ const App = () => {
   axios.post('https://damp-ocean-33580.herokuapp.com/api/sleepData', addSleep)
   .then(response => {
     setSleepData([...sleepData, response.data])
+    console.log(addSleep)
   })
 }
 
@@ -102,7 +103,10 @@ const handleDelete = (deletedSleep) => {
         <NewUser handleNewUser={handleNewUser}/>
         <Login handleLogin={handleLogin}/>
         <Add user={user} handleCreate={handleCreate}/>
-        {sleepData.map((sleep) => {
+        {sleepData.filter((posts) => {
+          if (posts.username == user.username) {
+            return posts }
+        }).map((sleep) => {
           return(
             <div key={sleep.id}>
             <h3>Name:{sleep.name}</h3>
