@@ -72,6 +72,10 @@ const handleDelete = (deletedSleep) => {
   })
 }
 
+const logout = () => {
+  setUser([])
+}
+
 
 // ========USE EFFECT=======
 
@@ -87,6 +91,7 @@ const handleDelete = (deletedSleep) => {
     <>
         <h1>Sleep Tracker</h1>
         <h2>Welcome to your sleep tracker {user.username}</h2>
+        <button onClick={logout}>Log Out</button>
         <h2>Add a New Sleep Record</h2>
         <NewUser handleNewUser={handleNewUser}/>
         <Login handleLogin={handleLogin}/>
@@ -103,6 +108,7 @@ const handleDelete = (deletedSleep) => {
             <h3>Hours Slept:{sleep.hoursSlept}</h3>
             <h3>Routine:{sleep.routine}</h3>
             <h3>Quality of Sleep:{sleep.sleepQuality}</h3>
+            <h3>Notes:{sleep.notes}</h3>
             <Edit handleUpdate={handleUpdate} sleep={sleep}/>
             <button onClick={() => {handleDelete(sleep
             )}}>
@@ -111,6 +117,7 @@ const handleDelete = (deletedSleep) => {
             </div>
           )
         })}
+
     </>
   )
 }

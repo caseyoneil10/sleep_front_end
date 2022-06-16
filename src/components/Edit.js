@@ -17,6 +17,7 @@ const Edit = (props) => {
 					<input type="text" name="name" value={sleep.name} onChange={handleChange}></input>
 					<input type="number" name="age" value={sleep.age} onChange={handleChange}></input>
 					<input type="date" name="date" value={sleep.date} onChange={handleChange}></input>
+					<input type="number" min="0" max="24" name="hoursSlept" value={sleep.hoursSlept} onChange={handleChange}></input>
 					<select name="routine" value={sleep.routine} onChange={handleChange}>
 						<option value='select an option'>Select an Option From Below</option>
 						<option value='none'>None</option>
@@ -26,8 +27,8 @@ const Edit = (props) => {
 						<option value='Medication - Unperscribed'>Medication - Unperscribed</option>
 						<option value='White Noise/ Sleep Noises'>White Noise/ Sleep Noises</option>
 					</select>
-					<input type="number" name="hoursSlept" value={sleep.hoursSlept} onChange={handleChange}></input>
-					<input type="number" name="sleepQuality" value={sleep.sleepQuality} onChange={handleChange}></input>
+					<input type="number" name="sleepQuality" min="1" max="5" value={sleep.sleepQuality} onChange={handleChange}></input>
+					<input required type="text" value={sleep.notes} name="notes" onChange={handleChange}></input>
 					<input type="submit"></input>
 				</form>
 				</>
