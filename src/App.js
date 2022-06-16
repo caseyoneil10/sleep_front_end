@@ -60,8 +60,11 @@ const App = () => {
   const handleLogin = (findUser) => {
   axios.put('https://damp-ocean-33580.herokuapp.com/api/useraccount/login' , findUser)
   .then((response) => {
+    if (response.data.username == null) {
+      alert('Username and Password Do Not Match')
+    } else {
     setUser(response.data)
-    console.log(response.data)
+    console.log(response.data)}
   })
 }
 // ========DELETE SLEEP RECORD=======
