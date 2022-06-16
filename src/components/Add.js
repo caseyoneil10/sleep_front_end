@@ -3,17 +3,30 @@ import React, { useState, useEffect } from 'react'
 const Add = (props) => {
 
 	let emptySleep = {name: '', age: '', notes: '', date: '', hoursSlept: '', routine: '', sleepQuality: '', username: ''}
-		const [sleep, setSleep] = useState(emptySleep)
+
+
+
+	const [sleep, setSleep] = useState(emptySleep)
 
 	const handleChange = (event) => {
 		setSleep({...sleep, [event.target.name]: event.target.value})
+
 		}
 
 	const handleSubmit = (event) => {
+		console.log(props.user.username);
 			event.preventDefault()
+			console.log(sleep);
+			sleep.username = props.user
 			props.handleCreate(sleep)
-			setSleep({name: '', age: '', date: '', hoursSlept: '', routine: '', sleepQuality: '', notes: '', username: props.user.username})
+			setSleep({name: '', age: '', date: '', hoursSlept: '', routine: '', sleepQuality: '', notes: '', username: ''})
+
 	}
+
+	useEffect(() => {
+
+	}, [])
+
 		return (
 			<form onSubmit={handleSubmit}>
 				<input required placeholder="Name" type="text" value={sleep.name} name="name" onChange={handleChange}></input>

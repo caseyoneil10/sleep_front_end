@@ -8,7 +8,7 @@ import NewUser from './components/NewUser'
 const App = () => {
   const [sleepData, setSleepData] = useState([])
   const [newUser, setNewUser] = useState([])
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState()
 
 // ========GET SLEEP RECORDS=======
 
@@ -58,7 +58,7 @@ const App = () => {
   const handleLogin = (findUser) => {
   axios.put('https://damp-ocean-33580.herokuapp.com/api/useraccount/login' , findUser)
   .then((response) => {
-    setUser(response.data)
+    setUser(response.data.username)
     console.log(response.data)
   })
 }
@@ -81,7 +81,6 @@ const logout = () => {
 
   useEffect(() => {
     getSleepData()
-
   }, [])
 
 
@@ -90,14 +89,14 @@ const logout = () => {
   return (
     <>
         <h1>Sleep Tracker</h1>
-        <h2>Welcome to your sleep tracker {user.username}</h2>
+        <h2>Welcome to your sleep tracker {user}</h2>
         <button onClick={logout}>Log Out</button>
         <h2>Add a New Sleep Record</h2>
         <NewUser handleNewUser={handleNewUser}/>
         <Login handleLogin={handleLogin}/>
         <Add user={user} handleCreate={handleCreate}/>
         {sleepData.filter((posts) => {
-          if (posts.username == user.username) {
+          if (posts.username == user) {
             return posts }
         }).map((sleep) => {
           return(
