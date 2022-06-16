@@ -9,6 +9,7 @@ const App = () => {
   const [sleepData, setSleepData] = useState([])
   const [newUser, setNewUser] = useState([])
   const [user, setUser] = useState([])
+  const [deletedPosts, setDeletedPosts] = useState([])
 
 // ========GET SLEEP RECORDS=======
 
@@ -69,22 +70,34 @@ const App = () => {
 }
 // ========DELETE SLEEP RECORD=======
 
-const handleDeleteUser = () => {
-  axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' +
-  user.id)
-  .then(() => {
-    setUser([])
-    // handleDeleteUserData()
-  })
+
+const handleFindDeletedPosts= () => {
+  sleepData.filter((deletedPosts) => {
+      if (deletedPosts.username == user.username) {
+       console.log(deletedPosts.id)
+       axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
+       deletedPosts.id)
+     }
+   });axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' + user.id).then(() => {
+     setUser([])
+   })
 }
 
-const handleDeleteUserData = (deletedSleep) => {
-  axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' +
-  deletedSleep.id)
-  .then((response) => {
-    setSleepData(sleepData.filter(sleep => sleep.id !== deletedSleep.id))
-  })
-}
+// const handleDeleteUserAndPosts = () => {
+//   console.log(deletedPosts);
+//   deletedPosts.map((deletedPosts) => {
+//     console.log(deletedPosts.id);
+//   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
+//   deletedPosts.id)
+//     }).then((response) => {
+//       axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' + user.id)
+//     })
+//   }
+
+// const handleDeleteUsername = () => {
+//   axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/'+ user.id)
+//   setUser([])
+// }
 
 const handleDelete = (deletedSleep) => {
   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
@@ -110,13 +123,13 @@ const logout = () => {
         <h1>Sleep Tracker</h1>
         <h2>Welcome to your sleep tracker {user.username}</h2>
         <button onClick={logout}>Log Out</button>
-        <button onClick={handleDeleteUser}>Delete User Account</button>
+        <button onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button>
         <h2>Add a New Sleep Record</h2>
         <NewUser handleNewUser={handleNewUser}/>
         <Login handleLogin={handleLogin}/>
         <Add user={user} handleCreate={handleCreate}/>
         {sleepData.filter((posts) => {
-          if (posts.username == user.username) {
+          if (posts.username === user.username) {
             return posts }
         }).map((sleep) => {
           return(
