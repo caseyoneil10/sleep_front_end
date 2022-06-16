@@ -14,18 +14,14 @@ const Add = (props) => {
 		}
 
 	const handleSubmit = (event) => {
-		console.log(props.user.username);
+		// console.log(props.user.username);
 			event.preventDefault()
-			console.log(sleep);
-			sleep.username = props.user
+			// console.log(sleep);
+			sleep.username = props.user.username
 			props.handleCreate(sleep)
 			setSleep({name: '', age: '', date: '', hoursSlept: '', routine: '', sleepQuality: '', notes: '', username: ''})
 
 	}
-
-	useEffect(() => {
-
-	}, [])
 
 		return (
 			<form onSubmit={handleSubmit}>

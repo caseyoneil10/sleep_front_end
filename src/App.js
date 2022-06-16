@@ -8,7 +8,7 @@ import NewUser from './components/NewUser'
 const App = () => {
   const [sleepData, setSleepData] = useState([])
   const [newUser, setNewUser] = useState([])
-  const [user, setUser] = useState()
+  const [user, setUser] = useState([])
 
 // ========GET SLEEP RECORDS=======
 
@@ -37,9 +37,11 @@ const App = () => {
   const handleNewUser = (addUser) => {
   axios.post('https://damp-ocean-33580.herokuapp.com/api/useraccount', addUser)
   .then(response => {
-    setNewUser([...newUser, response.data])
-  })
-}
+    setNewUser([...newUser, response.data],
+    (err) => console.error(err))
+  }).catch((error) => alert('Username Already Taken. Try Again.'))
+
+  }
 
 
 // ========EDIT  SLEEP RECORD=======
@@ -58,11 +60,28 @@ const App = () => {
   const handleLogin = (findUser) => {
   axios.put('https://damp-ocean-33580.herokuapp.com/api/useraccount/login' , findUser)
   .then((response) => {
-    setUser(response.data.username)
+    setUser(response.data)
     console.log(response.data)
   })
 }
 // ========DELETE SLEEP RECORD=======
+
+const handleDeleteUser = () => {
+  axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' +
+  user.id)
+  .then(() => {
+    setUser([])
+    // handleDeleteUserData()
+  })
+}
+
+const handleDeleteUserData = (deletedSleep) => {
+  axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' +
+  deletedSleep.id)
+  .then((response) => {
+    setSleepData(sleepData.filter(sleep => sleep.id !== deletedSleep.id))
+  })
+}
 
 const handleDelete = (deletedSleep) => {
   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
@@ -83,20 +102,18 @@ const logout = () => {
     getSleepData()
   }, [])
 
-
-
-
   return (
     <>
         <h1>Sleep Tracker</h1>
-        <h2>Welcome to your sleep tracker {user}</h2>
+        <h2>Welcome to your sleep tracker {user.username}</h2>
         <button onClick={logout}>Log Out</button>
+        <button onClick={handleDeleteUser}>Delete User Account</button>
         <h2>Add a New Sleep Record</h2>
         <NewUser handleNewUser={handleNewUser}/>
         <Login handleLogin={handleLogin}/>
         <Add user={user} handleCreate={handleCreate}/>
         {sleepData.filter((posts) => {
-          if (posts.username == user) {
+          if (posts.username == user.username) {
             return posts }
         }).map((sleep) => {
           return(
