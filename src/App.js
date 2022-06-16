@@ -14,9 +14,12 @@ const App = () => {
   const [loginHeader, setLoginHeader] = useState(false)
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false)
+  const [disabled, setDisabled] = useState(false)
 
   const showPage = () => {
     setShow(true)
+    setLoginHeader(false)
+    setShowLogin(false)
   }
 
   const showLoginTab = () => {
@@ -124,7 +127,9 @@ const handleDelete = (deletedSleep) => {
           loginHeader?null:<h2>Create an accout to log in and track sleep</h2>
         }
         <button className='creat_account' onClick={showPage}>Create accout</button>
-        <button className='login_btn' onClick={showloginAndHideCreate}>Login</button>
+        <button className='login_btn' disabled={disabled} onClick={()=>{
+          showloginAndHideCreate()
+        }}>Login</button>
       </div>
         {
           showLogin?<h1>Sleep Tracker</h1>:null
@@ -133,15 +138,17 @@ const handleDelete = (deletedSleep) => {
           showLogin?<h2>Welcome to your sleep tracker {user.username}</h2>:null
         }
         {
-          showLogin?<h2>Add a New Sleep Record</h2>:null
+          showLogin?<h2>Log in to track sleep</h2>:null
         }
         <div className='login_form'>      
         {
           show?<NewUser handleNewUser={handleNewUser}/>:null
         }
+        
         {
           showLogin?<Login handleLogin={handleLogin}/>:null
         }
+        <h3>Add new sleep record</h3>
         {
           showLogin?<Add user={user} handleCreate={handleCreate}/>:null
         }
