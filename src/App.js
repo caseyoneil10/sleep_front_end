@@ -5,7 +5,6 @@ import Edit from './components/Edit'
 import Login from './components/Login'
 import NewUser from './components/NewUser'
 
-
 const App = () => {
   const [sleepData, setSleepData] = useState([])
   const [newUser, setNewUser] = useState([])
@@ -22,23 +21,13 @@ const App = () => {
     .catch((error) => console.error(error))
   }
 
-// ========GET USERS=======
-
-  const getUser = () => {
-    axios
-    .get('https://damp-ocean-33580.herokuapp.com/api/useraccount')
-    .then(response => setUser(response.data),
-    (err) => console.error(err)
-  )
-    .catch((error) => console.error(error))
-  }
-
 // ========CREATE NEW SLEEP RECORD=======
 
   const handleCreate = (addSleep) => {
   axios.post('https://damp-ocean-33580.herokuapp.com/api/sleepData', addSleep)
   .then(response => {
     setSleepData([...sleepData, response.data])
+    console.log(addSleep)
   })
 }
 
@@ -70,6 +59,7 @@ const App = () => {
   axios.put('https://damp-ocean-33580.herokuapp.com/api/useraccount/login' , findUser)
   .then((response) => {
     setUser(response.data)
+    console.log(response.data)
   })
 }
 // ========DELETE SLEEP RECORD=======
@@ -87,7 +77,7 @@ const handleDelete = (deletedSleep) => {
 
   useEffect(() => {
     getSleepData()
-    getUser()
+
   }, [])
 
 
@@ -96,13 +86,17 @@ const handleDelete = (deletedSleep) => {
   return (
     <>
         <h1>Sleep Tracker</h1>
+        <h2>Welcome to your sleep tracker {user.username}</h2>
         <h2>Add a New Sleep Record</h2>
         <NewUser handleNewUser={handleNewUser}/>
         <Login handleLogin={handleLogin}/>
-        <Add handleCreate={handleCreate}/>
-        {sleepData.map((sleep) => {
+        <Add user={user} handleCreate={handleCreate}/>
+        {sleepData.filter((posts) => {
+          if (posts.username == user.username) {
+            return posts }
+        }).map((sleep) => {
           return(
-            <div>
+            <div key={sleep.id}>
             <h3>Name:{sleep.name}</h3>
             <h3>Age:{sleep.age}</h3>
             <h3>Date:{sleep.date}</h3>
