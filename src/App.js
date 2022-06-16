@@ -11,6 +11,25 @@ const App = () => {
   const [newUser, setNewUser] = useState([])
   const [user, setUser] = useState([])
 
+  const [loginHeader, setLoginHeader] = useState(false)
+  const [show, setShow] = useState(false);
+  const [showLogin, setShowLogin] = useState(false)
+
+  const showPage = () => {
+    setShow(true)
+  }
+
+  const showLoginTab = () => {
+    setShowLogin(true)
+  }
+
+  const showloginAndHideCreate = () => {
+    showLoginTab()
+    setShow(false)
+    setLoginHeader(true)
+  }
+  
+
 // ========GET SLEEP RECORDS=======
 
   const getSleepData = () => {
@@ -97,12 +116,35 @@ const handleDelete = (deletedSleep) => {
 
   return (
     <>
-        <h1>Sleep Tracker</h1>
-        <h2>Welcome to your sleep tracker {user.username}</h2>
-        <h2>Add a New Sleep Record</h2>
-        <NewUser handleNewUser={handleNewUser}/>
-        <Login handleLogin={handleLogin}/>
-        <Add user={user} handleCreate={handleCreate}/>
+      <div id='login_page'>
+        {
+          loginHeader?null:<h1>The Sleep app</h1>
+        }
+        {
+          loginHeader?null:<h2>Create an accout to log in and track sleep</h2>
+        }
+        <button className='creat_account' onClick={showPage}>Create accout</button>
+        <button className='login_btn' onClick={showloginAndHideCreate}>Login</button>
+      </div>
+        {
+          showLogin?<h1>Sleep Tracker</h1>:null
+        }
+        {
+          showLogin?<h2>Welcome to your sleep tracker {user.username}</h2>:null
+        }
+        {
+          showLogin?<h2>Add a New Sleep Record</h2>:null
+        }
+        <div className='login_form'>      
+        {
+          show?<NewUser handleNewUser={handleNewUser}/>:null
+        }
+        {
+          showLogin?<Login handleLogin={handleLogin}/>:null
+        }
+        {
+          showLogin?<Add user={user} handleCreate={handleCreate}/>:null
+        }
         {sleepData.filter((posts) => {
           if (posts.username == user.username) {
             return posts }
@@ -123,6 +165,7 @@ const handleDelete = (deletedSleep) => {
             </div>
           )
         })}
+        </div>
     </>
   )
 }
