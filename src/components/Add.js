@@ -5,6 +5,12 @@ const Add = (props) => {
 	let emptySleep = {name: '', age: '', notes: '', date: '', hoursSlept: '', routine: '', sleepQuality: '', username: ''}
 		const [sleep, setSleep] = useState(emptySleep)
 
+		const [show, setShow] = useState(false)
+
+	const showLodData = () =>{
+		setShow(true)
+	}
+
 	const handleChange = (event) => {
 		setSleep({...sleep, [event.target.name]: event.target.value})
 		}

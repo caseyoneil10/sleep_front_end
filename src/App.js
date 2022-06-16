@@ -14,7 +14,7 @@ const App = () => {
   const [loginHeader, setLoginHeader] = useState(false)
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false)
-  const [disabled, setDisabled] = useState(false)
+  const [showRecord, setShowRecord] = useState(false)
 
   const showPage = () => {
     setShow(true)
@@ -22,8 +22,12 @@ const App = () => {
     setShowLogin(false)
   }
 
-  const showLoginTab = () => {
+  const showLoginTab = () =>{
     setShowLogin(true)
+  }
+
+  const showRecordInput = () => {
+    setShowRecord(true)
   }
 
   const showloginAndHideCreate = () => {
@@ -127,7 +131,7 @@ const handleDelete = (deletedSleep) => {
           loginHeader?null:<h2>Create an accout to log in and track sleep</h2>
         }
         <button className='creat_account' onClick={showPage}>Create accout</button>
-        <button className='login_btn' disabled={disabled} onClick={()=>{
+        <button className='login_btn' onClick={()=>{
           showloginAndHideCreate()
         }}>Login</button>
       </div>
@@ -148,9 +152,11 @@ const handleDelete = (deletedSleep) => {
         {
           showLogin?<Login handleLogin={handleLogin}/>:null
         }
-        <h3>Add new sleep record</h3>
         {
-          showLogin?<Add user={user} handleCreate={handleCreate}/>:null
+          showLogin?<h3>Add new sleep record</h3>:null
+        }
+        {
+          showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
         {sleepData.filter((posts) => {
           if (posts.username == user.username) {
