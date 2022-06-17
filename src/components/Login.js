@@ -15,17 +15,15 @@ const Login = (props) => {
 	}
 
 	return (
-
+		<div className="container">
 			<form onSubmit={handleSubmit}>
-				<input placeholder="Username" type="text" name="username" value={user.username} onChange={handleChange}></input>
-				<input placeholder="Password" type="password" name="password" value={user.password} onChange={handleChange}></input>
+				<input className="button" placeholder="Username" type="text" name="username" value={user.username} onChange={handleChange}></input>
+				<input className="button" placeholder="Password" type="password" name="password" value={user.password} onChange={handleChange}></input>
+				<br/>
 				<input type="submit"></input>
 			</form>
-
+		</div>
 	)
-
-
-
 }
 
 
