@@ -12,6 +12,7 @@ const Login = (props) => {
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		props.handleLogin(user)
+		setUser({username: '', password: ''})
 	}
 
 
