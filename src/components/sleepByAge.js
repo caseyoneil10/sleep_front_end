@@ -1,69 +1,83 @@
+// const React = require("react")
+import React, {useState, useEffect} from 'react'
+
 //get the user's age
 //make const for each age range
 //compare the users age to an age rang
     //if user.age is in adultRange
     //compare avg user.hours to hours range
 
+const SleepByAge = (props) => {
 
-
-
-
-// import React, { useState, useEffect, useReducer } from 'react'
-
+//agegroup, minAge, MaxAge, Min Sleep, MaxSleep
 const sleepRanges = [
-    {
-        ageGroup: "teen",
-        ageRange: {
-            min: 13,
-            max: 18,
-        },
-        sleepRange:
-        {
-            min: 8,
-            max: 10,
-        },
-    },
-    // {
-    //     ageGroup: "adult",
-    //     ageMin: 18,
-    //     ageMax: 60,
-    //     hoursPerNightMin: 7,
-    //     hoursPerNightMaX: null,
-    // },
-    // {
-    //     ageGroup: "olderAdult",
-    //     ageMin: 61,
-    //     ageMax: 64,
-    //     hoursPerNightMin: 7,
-    //     hoursPerNightMaX: 9,
-    // },
-    // {
-    //     ageGroup: "retiree",
-    //     ageMin: 65,
-    //     ageMax: null,
-    //     hoursPerNightMin: 7,
-    //     hoursPerNightMaX: 8,
-    // }
+    ["teen",'13', '18', '8', '10'],
+    ["adult",'18', '60', '7', '10'],
+    ["olderAdult",'61', '64', '7', '9'],
+    ["retiree",'65', '100', '7', '8'],
 ]
+const [checkAgeMessage, setCheckAgeMessage] = useState('')
+const userAge = 25
+const checkAge = () => {
 
-
-
-
-let checkAge= () =>{
-   const age = 30
-const sleep = 8
-
-    if (age >= sleepRanges[0].ageRange.min &&  age <= sleepRanges[0].ageRange.max)
+    for(let i = 0; i <= sleepRanges.length; i++){
         
-        console.log(`You get an average of ${sleep} per night.`)
-        console.log(`For people in your age range, you should get between ${sleepRanges[0].sleepRange.min} and ${sleepRanges[0].sleepRange.max} hours of sleep a night.`)
+        if (userAge > 13 && userAge < 18) {
+            return setCheckAgeMessage(`Teenagers should get between 8 and 10 hours of sleep a night.`)   
+            } else if 
+            (userAge > 18 && userAge < 60) {
+            return setCheckAgeMessage(`Adults should get between 7 and 10 hours of sleep a night.`)     
+            } else if 
+            (userAge > 61 && userAge < 64) {
+            return setCheckAgeMessage(`Older adults should get between 7 and 9 hours of sleep a night.`)
+            } else if
+            (userAge >= 65) {
+            return setCheckAgeMessage(`Retirees should get between 7 and 8 hours of sleep a night.`)
+            } else {
+            return setCheckAgeMessage("You may be too young to use this app")
+            }
+        }
+    }
     
+    
+    useEffect(() => {
+        checkAge()
+    
+      }, [])
+    return (
+        <>
+           <div>
+            <h1>{checkAgeMessage}</h1>
+           </div>
+        </>
+    )
 }
+export default SleepByAge
+//---------------CODE GRAVEYARD----------------//
+// const sleep = 8
 
-console.log(checkAge())
-// const sleepByAge = (props) =>{
-//     if sle
-
+//     if (age >= sleepRanges[0].ageRange.min && age <= sleepRanges[0].ageRange.max)
+        
+//         console.log(`You get an average of ${sleep} hour sper night.`)
+//         console.log(`For people in your age range, you should get between ${sleepRanges[0].sleepRange.min} and ${sleepRanges[0].sleepRange.max} hours of sleep a night.`)
+    
 // }
 
-// export default sleepByAge
+// console.log(checkAge())
+
+ // if (posts.username == user.username) {
+    //     return user.age }
+    //     sleepRanges.map(sleepRanges)
+    // }
+//    const checkAge = () =>{
+//     sleepRanges.map = (age) =>{
+//       return console.log("test")
+//     }
+//    }
+
+// const minAge = sleepRanges.map((sleepRanges) => sleepRanges.ageRange.min);
+// const maxAge = sleepRanges.map((sleepRanges) => sleepRanges.ageRange.max);
+// const minSleep = sleepRanges.map((sleepRanges) => sleepRanges.sleepRange.min);
+// const maxSleep = sleepRanges.map((sleepRanges) => sleepRanges.sleepRange.max);
+// let userAge = 20
+//     checkAge()
