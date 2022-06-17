@@ -74,7 +74,7 @@ const App = () => {
 const handleFindDeletedPosts= () => {
   sleepData.filter((deletedPosts) => {
       if (deletedPosts.username == user.username) {
-       console.log(deletedPosts.id)
+       // console.log(deletedPosts.id)
        axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
        deletedPosts.id)
      }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const Add = (props) => {
-
+	
 	let emptySleep = {name: '', age: '', notes: '', date: '', hoursSlept: '', routine: '', sleepQuality: '', username: ''}
 
 
