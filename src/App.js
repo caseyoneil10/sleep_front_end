@@ -11,6 +11,7 @@ const App = () => {
   const [newUser, setNewUser] = useState([])
   const [user, setUser] = useState([])
   const [deletedPosts, setDeletedPosts] = useState([])
+  const [currentUser, setCurrentUser] = useState([])
 
   const [loginHeader, setLoginHeader] = useState(false)
   const [show, setShow] = useState(false);
@@ -18,6 +19,8 @@ const App = () => {
   const [showRecord, setShowRecord] = useState(false)
   const [loginSuccess, setLoginSuccess] = useState(false)
 
+
+// ========SHOW HIDE FUNCTIONS=======
   const showPage = () => {
     setShow(true)
     setLoginHeader(false)
@@ -51,6 +54,8 @@ const App = () => {
   )
     .catch((error) => console.error(error))
   }
+// ========GET CURRENT USER=======
+
 
 // ========CREATE NEW SLEEP RECORD=======
 
@@ -70,6 +75,7 @@ const App = () => {
   .then(response => {
     setNewUser([...newUser, response.data],
     (err) => console.error(err))
+    alert("Account Created Login Below")
   }).catch((error) => alert('Username Already Taken. Try Again.'))
 
   }
@@ -94,7 +100,11 @@ const App = () => {
     if (response.data.username == null) {
       alert('Username and Password Do Not Match')
     } else {
-    setUser(response.data)
+      setUser(response.data)
+      axios
+      .get('https://damp-ocean-33580.herokuapp.com/api/useraccount/' + response.data.id).then((response) => {
+        setCurrentUser(response.data)
+      })
     setShowRecord(true)
     setLoginSuccess(false)
     console.log(response.data)
@@ -102,8 +112,9 @@ const App = () => {
   })
 
 }
-// ========DELETE SLEEP RECORD=======
 
+
+// ========DELETE USER AND ALL DATA =======
 
 const handleFindDeletedPosts= () => {
   sleepData.filter((deletedPosts) => {
@@ -114,9 +125,13 @@ const handleFindDeletedPosts= () => {
      }
    });axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' + user.id).then(() => {
      setUser([])
+     setCurrentUser([])
+     setShowRecord(false)
+     setShowLogin(false)
+     setLoginHeader(false)
    })
 }
-
+// ========DELETE SINGLE RECORD=======
 const handleDelete = (deletedSleep) => {
   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
   deletedSleep.id)
@@ -124,10 +139,14 @@ const handleDelete = (deletedSleep) => {
     setSleepData(sleepData.filter(sleep => sleep.id !== deletedSleep.id))
   })
 }
-
+// ========LOGOUT=======
 const logout = () => {
   setUser([])
+  setCurrentUser([])
   setShowRecord(false)
+  setShowLogin(false)
+  setLoginHeader(false)
+
 }
 
 
@@ -205,7 +224,7 @@ const logout = () => {
         })}
 
         </div>
-        {showRecord?<SleepByAge /> : null}
+        {showRecord?<SleepByAge currentUser={currentUser} /> : null}
     </>
   )
 }
