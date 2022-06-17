@@ -39,7 +39,7 @@ const App = () => {
     setLoginHeader(true)
     setLoginSuccess(true)
   }
-  
+
 
 // ========GET SLEEP RECORDS=======
 
@@ -95,16 +95,12 @@ const App = () => {
       alert('Username and Password Do Not Match')
     } else {
     setUser(response.data)
-
+    setShowRecord(true)
+    setLoginSuccess(false)
     console.log(response.data)
-    if (response.data.username == null){
-      
-    } else{
-      setShowRecord(true)
-      setLoginSuccess(false)
     }
   })
-  
+
 }
 // ========DELETE SLEEP RECORD=======
 
@@ -180,11 +176,11 @@ const logout = () => {
         {
           showLogin?<h2>Log in to track sleep</h2>:null
         }
-        <div className='login_form'>      
+        <div className='login_form'>
         {
           show?<NewUser handleNewUser={handleNewUser}/>:null
         }
-        
+
         {
           loginSuccess?<Login handleLogin={handleLogin}/>:null
         }
@@ -195,14 +191,14 @@ const logout = () => {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
 
-      
-       
+
+
         <button onClick={logout}>Log Out</button>
         <button onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button>
-     
-        
-        
-       
+
+
+
+
         {sleepData.filter((posts) => {
           if (posts.username === user.username) {
             return posts }
@@ -220,7 +216,7 @@ const logout = () => {
             <button onClick={() => {handleDelete(sleep
             )}}>
             Delete Sleep Record
-            </button> 
+            </button>
             </div>
           )
         })}
