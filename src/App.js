@@ -15,6 +15,7 @@ const App = () => {
   const [show, setShow] = useState(false);
   const [showLogin, setShowLogin] = useState(false)
   const [showRecord, setShowRecord] = useState(false)
+  const [loginSuccess, setLoginSuccess] = useState(false)
 
   const showPage = () => {
     setShow(true)
@@ -35,6 +36,7 @@ const App = () => {
     showLoginTab()
     setShow(false)
     setLoginHeader(true)
+    setLoginSuccess(true)
   }
   
 
@@ -99,8 +101,14 @@ const App = () => {
   .then((response) => {
     setUser(response.data)
     console.log(response.data)
+    if (response.data.username == null){
+      
+    } else{
+      setShowRecord(true)
+      setLoginSuccess(false)
+    }
   })
-  setShowRecord(true)
+  
 }
 // ========DELETE SLEEP RECORD=======
 
@@ -152,7 +160,7 @@ const handleDelete = (deletedSleep) => {
         }
         
         {
-          showLogin?<Login handleLogin={handleLogin} showRecordInput={showRecordInput}/>:null
+          loginSuccess?<Login handleLogin={handleLogin}/>:null
         }
         {
           showRecord?<h3>Add new sleep record</h3>:null
