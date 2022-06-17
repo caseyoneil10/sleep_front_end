@@ -195,20 +195,18 @@ const logout = () => {
         {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
-
+        {showRecord?<SleepByAge handleLogin={handleLogin} currentUserAge={currentUserAge} /> : null}
         {sleepData.filter((posts) => {
           if (posts.username === user.username) {
             return posts }
         }).map((sleep) => {
           return(
             <div key={sleep.id}>
-            <h3>Name:{sleep.name}</h3>
-            <h3>Age:{sleep.age}</h3>
-            <h3>Date:{sleep.date}</h3>
-            <h3>Hours Slept:{sleep.hoursSlept}</h3>
-            <h3>Routine:{sleep.routine}</h3>
-            <h3>Quality of Sleep:{sleep.sleepQuality}</h3>
-            <h3>Notes:{sleep.notes}</h3>
+            <h3>Date: {sleep.date}</h3>
+            <h3>Hours Slept: {sleep.hoursSlept}</h3>
+            <h3>Routine: {sleep.routine}</h3>
+            <h3>Quality of Sleep: {sleep.sleepQuality}</h3>
+            <h3>Notes: {sleep.notes}</h3>
             <Edit handleUpdate={handleUpdate} sleep={sleep}/>
             <button onClick={() => {handleDelete(sleep
             )}}>
@@ -219,7 +217,7 @@ const logout = () => {
         })}
 
         </div>
-        {showRecord?<SleepByAge handleLogin={handleLogin} currentUserAge={currentUserAge} /> : null}
+
     </>
   )
 }
