@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 const Login = (props) => {
 	let emptyUser = {username: '', password: ''}
 	const [user, setUser] = useState(emptyUser)
+	
 
 	const handleChange = (event) => {
 		setUser({...user, [event.target.name]: event.target.value})
@@ -13,6 +14,7 @@ const Login = (props) => {
 		props.handleLogin(user)
 		setUser({username: '', password: ''})
 	}
+
 
 	return (
 
