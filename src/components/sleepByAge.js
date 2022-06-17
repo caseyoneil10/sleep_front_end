@@ -9,7 +9,7 @@ import React, {useState, useEffect} from 'react'
 
 const SleepByAge = (props) => {
 
-const [userAge, setUserAge] = useState(props.currentUser.age)
+console.log(props.currentUserAge)
 
 //agegroup, minAge, MaxAge, Min Sleep, MaxSleep
 const sleepRanges = [
@@ -20,24 +20,22 @@ const sleepRanges = [
 ]
 const [checkAgeMessage, setCheckAgeMessage] = useState('')
 
-const userAgeCheck = () => {
-   setUserAge(props.currentUser.age)
- }
+
 
 const checkAge = () => {
 
     for(let i = 0; i <= sleepRanges.length; i++){
 
-        if (props.currentUser.age > 13 && userAge < 18) {
+        if (props.currentUserAge > 13 && props.currentUserAge < 18) {
             return setCheckAgeMessage(`Teenagers should get between 8 and 10 hours of sleep a night.`)
             } else if
-            (props.currentUser.age > 18 && userAge < 60) {
+            (props.currentUserAge > 18 && props.currentUserAge < 60) {
             return setCheckAgeMessage(`Adults should get between 7 and 10 hours of sleep a night.`)
             } else if
-            (props.currentUser.age > 61 && userAge < 64) {
+            (props.currentUserAge > 61 && props.currentUserAge < 64) {
             return setCheckAgeMessage(`Older adults should get between 7 and 9 hours of sleep a night.`)
             } else if
-            (props.currentUser.age >= 65) {
+            (props.currentUserAge >= 65) {
             return setCheckAgeMessage(`Retirees should get between 7 and 8 hours of sleep a night.`)
             } else {
             return setCheckAgeMessage("You may be too young to use this app")
@@ -45,11 +43,11 @@ const checkAge = () => {
         }
     }
 
-
     useEffect(() => {
         checkAge()
 
-      }, [])
+
+      }, [props.handleLogin])
     return (
         <>
            <div>

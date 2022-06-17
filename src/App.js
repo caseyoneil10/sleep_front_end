@@ -12,6 +12,7 @@ const App = () => {
   const [user, setUser] = useState([])
   const [deletedPosts, setDeletedPosts] = useState([])
   const [currentUser, setCurrentUser] = useState([])
+  const [currentUserAge, setCurrentUserAge] = useState()
 
   const [loginHeader, setLoginHeader] = useState(false)
   const [show, setShow] = useState(false);
@@ -54,8 +55,6 @@ const App = () => {
   )
     .catch((error) => console.error(error))
   }
-// ========GET CURRENT USER=======
-
 
 // ========CREATE NEW SLEEP RECORD=======
 
@@ -67,7 +66,6 @@ const App = () => {
   })
 }
 
-
 // ========CREATE NEW USER=======
 
   const handleNewUser = (addUser) => {
@@ -75,11 +73,10 @@ const App = () => {
   .then(response => {
     setNewUser([...newUser, response.data],
     (err) => console.error(err))
-    alert("Account Created Login Below")
+    alert("Account Created Click The Login Button Below")
   }).catch((error) => alert('Username Already Taken. Try Again.'))
 
   }
-
 
 // ========EDIT  SLEEP RECORD=======
 
@@ -103,16 +100,14 @@ const App = () => {
       setUser(response.data)
       axios
       .get('https://damp-ocean-33580.herokuapp.com/api/useraccount/' + response.data.id).then((response) => {
-        setCurrentUser(response.data)
+        setCurrentUserAge(response.data.age)
       })
     setShowRecord(true)
     setLoginSuccess(false)
     console.log(response.data)
     }
   })
-
 }
-
 
 // ========DELETE USER AND ALL DATA =======
 
@@ -146,9 +141,7 @@ const logout = () => {
   setShowRecord(false)
   setShowLogin(false)
   setLoginHeader(false)
-
 }
-
 
 // ========USE EFFECT=======
 
@@ -158,7 +151,6 @@ const logout = () => {
 
   return (
     <>
-
       <div id='login_page'>
         {
           loginHeader?null:<h1>The Sleep App</h1>
@@ -177,7 +169,7 @@ const logout = () => {
           showLogin?<h1>Sleep Tracker</h1>:null
         }
         {
-          showLogin?<h2>Welcome to your sleep tracker {user.username}</h2>:null
+          showLogin?<h2>Welcome To Your Sleep Tracker {user.username}</h2>:null
         }
         {
           showLogin?<h2>Log in to track sleep</h2>:null
@@ -224,7 +216,7 @@ const logout = () => {
         })}
 
         </div>
-        {showRecord?<SleepByAge currentUser={currentUser} /> : null}
+        {showRecord?<SleepByAge handleLogin={handleLogin} currentUserAge={currentUserAge} /> : null}
     </>
   )
 }
