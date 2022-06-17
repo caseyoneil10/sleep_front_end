@@ -117,22 +117,6 @@ const handleFindDeletedPosts= () => {
    })
 }
 
-// const handleDeleteUserAndPosts = () => {
-//   console.log(deletedPosts);
-//   deletedPosts.map((deletedPosts) => {
-//     console.log(deletedPosts.id);
-//   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
-//   deletedPosts.id)
-//     }).then((response) => {
-//       axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/' + user.id)
-//     })
-//   }
-
-// const handleDeleteUsername = () => {
-//   axios.delete('https://damp-ocean-33580.herokuapp.com/api/useraccount/'+ user.id)
-//   setUser([])
-// }
-
 const handleDelete = (deletedSleep) => {
   axios.delete('https://damp-ocean-33580.herokuapp.com/api/sleepData/' +
   deletedSleep.id)
@@ -143,6 +127,7 @@ const handleDelete = (deletedSleep) => {
 
 const logout = () => {
   setUser([])
+  setShowRecord(false)
 }
 
 
@@ -157,15 +142,17 @@ const logout = () => {
 
       <div id='login_page'>
         {
-          loginHeader?null:<h1>The Sleep app</h1>
+          loginHeader?null:<h1>The Sleep App</h1>
         }
         {
-          loginHeader?null:<h2>Create an accout to log in and track sleep</h2>
+          loginHeader?null:<h2>Create An Account to Log in and Track Sleep</h2>
         }
-        <button className='creat_account' onClick={showPage}>Create accout</button>
+
+        {showLogin ? null : <><button className='create_account' onClick={showPage}>Create Account</button>
         <button className='login_btn' onClick={()=>{
           showloginAndHideCreate()
-        }}>Login</button>
+        }}>Login</button> </> }
+
       </div>
         {
           showLogin?<h1>Sleep Tracker</h1>:null
@@ -185,19 +172,15 @@ const logout = () => {
           loginSuccess?<Login handleLogin={handleLogin}/>:null
         }
         {
+          showRecord?<><button onClick={logout}>Log Out</button>
+          <button onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button></> : null
+        }
+        {
           showRecord?<h3>Add new sleep record</h3>:null
         }
         {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
-
-
-
-        <button onClick={logout}>Log Out</button>
-        <button onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button>
-
-
-
 
         {sleepData.filter((posts) => {
           if (posts.username === user.username) {
@@ -222,7 +205,7 @@ const logout = () => {
         })}
 
         </div>
-        <SleepByAge />
+        {showRecord?<SleepByAge /> : null}
     </>
   )
 }
