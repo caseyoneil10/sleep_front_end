@@ -124,6 +124,8 @@ const handleFindDeletedPosts= () => {
      setShowRecord(false)
      setShowLogin(false)
      setLoginHeader(false)
+     setCurrentUserAge()
+
    })
 }
 // ========DELETE SINGLE RECORD=======
@@ -141,6 +143,7 @@ const logout = () => {
   setShowRecord(false)
   setShowLogin(false)
   setLoginHeader(false)
+  setCurrentUserAge()
 }
 
 // ========USE EFFECT=======
