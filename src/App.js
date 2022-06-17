@@ -101,6 +101,7 @@ const App = () => {
       axios
       .get('https://damp-ocean-33580.herokuapp.com/api/useraccount/' + response.data.id).then((response) => {
         setCurrentUserAge(response.data.age)
+        setCurrentUser(response.data)
       })
     setShowRecord(true)
     setLoginSuccess(false)
@@ -163,7 +164,7 @@ const logout = () => {
         }
 
         {showLogin ? null : <><button className='create_account' onClick={showPage}>Create Account</button>
-        <button className='login_btn' onClick={()=>{
+        <button className='button' onClick={()=>{
           showloginAndHideCreate()
         }}>Login</button> </> }
 
@@ -172,7 +173,7 @@ const logout = () => {
           showLogin?<h1>Sleep Tracker</h1>:null
         }
         {
-          showLogin?<h2>Welcome To Your Sleep Tracker {user.username}</h2>:null
+          showLogin?<h2>Welcome To Your Sleep Tracker, {currentUser.name}!</h2>:null
         }
         {
           showLogin?<h2>Log in to track sleep</h2>:null
@@ -186,8 +187,8 @@ const logout = () => {
           loginSuccess?<Login handleLogin={handleLogin}/>:null
         }
         {
-          showRecord?<><button onClick={logout}>Log Out</button>
-          <button onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button></> : null
+          showRecord?<><button className="button-primary" onClick={logout}>Log Out</button>
+          </> : null
         }
         {
           showRecord?<h3>Add new sleep record</h3>:null
@@ -195,7 +196,7 @@ const logout = () => {
         {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
-        {showRecord?<SleepByAge handleLogin={handleLogin} currentUserAge={currentUserAge} /> : null}
+        {showRecord?<SleepByAge user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
         {sleepData.filter((posts) => {
           if (posts.username === user.username) {
             return posts }
@@ -207,7 +208,7 @@ const logout = () => {
             <h3>Routine: {sleep.routine}</h3>
             <h3>Quality of Sleep: {sleep.sleepQuality}</h3>
             <h3>Notes: {sleep.notes}</h3>
-            <Edit handleUpdate={handleUpdate} sleep={sleep}/>
+            <Edit handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep}/>
             <button onClick={() => {handleDelete(sleep
             )}}>
             Delete Sleep Record
@@ -217,7 +218,8 @@ const logout = () => {
         })}
 
         </div>
-
+        <br/>
+        {showRecord?<button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
     </>
   )
 }

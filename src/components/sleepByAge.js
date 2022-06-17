@@ -9,7 +9,6 @@ import React, {useState, useEffect} from 'react'
 
 const SleepByAge = (props) => {
 
-console.log(props.currentUserAge)
 
 //agegroup, minAge, MaxAge, Min Sleep, MaxSleep
 const sleepRanges = [
@@ -45,6 +44,7 @@ const checkAge = () => {
 
     useEffect(() => {
         checkAge()
+      
 
 
       }, [props.handleLogin])
