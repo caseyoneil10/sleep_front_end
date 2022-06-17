@@ -4,6 +4,7 @@ import Add from './components/Add'
 import Edit from './components/Edit'
 import Login from './components/Login'
 import NewUser from './components/NewUser'
+import SleepByAge from './components/sleepByAge'
 
 const App = () => {
   const [sleepData, setSleepData] = useState([])
@@ -112,11 +113,11 @@ const logout = () => {
             <button onClick={() => {handleDelete(sleep
             )}}>
             Delete Sleep Record
-            </button>
+            </button> 
             </div>
           )
         })}
-
+        <SleepByAge />
     </>
   )
 }
