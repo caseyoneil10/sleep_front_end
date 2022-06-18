@@ -30,6 +30,7 @@ Helping users track their sleep. They can enter the amount of sleep they get eac
 -   JavaScript
 -  CSS Frameworks (Skeleton & Normalize)
 - GIT/GitHub
+- Bcrypt
 
 ## Wire-frame
 ![enter image description here](https://i.imgur.com/BLPVisi.png)
