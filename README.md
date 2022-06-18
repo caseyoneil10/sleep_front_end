@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Sleep Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 
 
-## Available Scripts
+## Link to App
 
-In the project directory, you can run:
+ [Front End](https://damp-ocean-33580.herokuapp.com/api/sleepData)
+ [Back End](https://protected-hamlet-59115.herokuapp.com/)
 
-### `npm start`
+## Premise
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Helping users track their sleep. They can enter the amount of sleep they get each night and also list what their pre-sleep routine consisted of (meditation, melatonin, white-noise etc.). Data is then listed to display on the page to see how others are sleeping and what the average sleep for all users is (in addition to other data)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## User Stories
 
-### `npm test`
+ - As a user, I want to add sleep data to my profile so that I can track
+   my sleeping patterns.
+ - As a user, I want to adjust my sleep data so I can maintain accurate
+   sleep data.
+  - As a user, I want to delete my sleep data to remove an entry as
+   needed.
+  - As a user, I want to identify my sleep aids and routine so that I can
+   reference the circumstances where I get the best sleep.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+-   Django
+-  React.js
+-   PostgresSQL
+-   JavaScript
+-  CSS Frameworks (Skeleton & Normalize)
+- GIT/GitHub
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Wire-frame
+![enter image description here](https://i.imgur.com/BLPVisi.png)
+## Approach Taken
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Stretch Goals
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - Include  **two or more models**.
+ - Include either a one-to-many or a many-to-many relationship.
+ - **Use a CSS framework**  like Skeleton or Bootstrap.
+ - **Include User Stories**.
+ - **Include wireframes** . 
+ -  User Authentication.
 
-### `npm run eject`
+## Unsolved Problems
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+ - 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Future Goals
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ - 
