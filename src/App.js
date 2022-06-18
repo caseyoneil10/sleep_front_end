@@ -39,7 +39,12 @@ const App = () => {
     setLoginHeader(true)
     setLoginSuccess(true)
   }
-
+  
+  const goBack =() => {
+    setLoginHeader(false)
+    setShowLogin(false)
+    setLoginSuccess(false)
+  }
 
 // ========GET SLEEP RECORDS=======
 
@@ -148,10 +153,14 @@ const logout = () => {
           loginHeader?null:<h2>Create An Account to Log in and Track Sleep</h2>
         }
 
-        {showLogin ? null : <><button className='create_account' onClick={showPage}>Create Account</button>
-        <button className='login_btn' onClick={()=>{
+        {
+          showLogin ? null : <button className='create_account' onClick={showPage}>Create Account</button>
+        }
+        {
+        showLogin ? null : <button className='login_btn' onClick={()=>{
           showloginAndHideCreate()
-        }}>Login</button> </> }
+        }}>Login</button>  
+        }
 
       </div>
         {
@@ -170,6 +179,9 @@ const logout = () => {
 
         {
           loginSuccess?<Login handleLogin={handleLogin}/>:null
+        }
+        {
+          loginSuccess?<button onClick={goBack}>Go Back</button>:null
         }
         {
           showRecord?<><button onClick={logout}>Log Out</button>
