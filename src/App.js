@@ -5,6 +5,9 @@ import Edit from './components/Edit'
 import Login from './components/Login'
 import NewUser from './components/NewUser'
 import SleepByAge from './components/sleepByAge'
+import './index.css'
+import './skeleton.css'
+import './normalize.css'
 
 const App = () => {
   const [sleepData, setSleepData] = useState([])
@@ -196,13 +199,13 @@ const logout = () => {
         {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
-        {showRecord?<SleepByAge user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
+        {showRecord?<SleepByAge className="container sleepfacts" user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
         {sleepData.filter((posts) => {
           if (posts.username === user.username) {
             return posts }
         }).map((sleep) => {
           return(
-            <div key={sleep.id}>
+            <div className="container record" key={sleep.id}>
             <h3>Date: {sleep.date}</h3>
             <h3>Hours Slept: {sleep.hoursSlept}</h3>
             <h3>Routine: {sleep.routine}</h3>
