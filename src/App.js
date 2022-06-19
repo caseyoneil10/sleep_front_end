@@ -47,7 +47,6 @@ const App = () => {
     setLoginSuccess(true)
   }
 
-
 // ========GET SLEEP RECORDS=======
 
   const getSleepData = () => {
@@ -109,6 +108,7 @@ const App = () => {
     setShowRecord(true)
     setLoginSuccess(false)
     console.log(response.data)
+
     }
   })
 }
@@ -158,29 +158,31 @@ const logout = () => {
 
   return (
     <>
-      <div id='login_page'>
+      <div className='container'>
         {
-          loginHeader?null:<h1>The Sleep App</h1>
+          loginHeader?null:<h2>The Sleep App</h2>
         }
         {
-          loginHeader?null:<h2>Create An Account to Log in and Track Sleep</h2>
+          loginHeader?null:<h3>Create An Account to Log in and Track Sleep</h3>
         }
 
-        {showLogin ? null : <><button className='create_account' onClick={showPage}>Create Account</button>
+        {showLogin ? null : <><button className='button' onClick={showPage}>Create Account</button>
         <button className='button' onClick={()=>{
           showloginAndHideCreate()
         }}>Login</button> </> }
 
       </div>
+      <div className="container">
         {
-          showLogin?<h1>Sleep Tracker</h1>:null
+          showLogin?<h2>Sleep Tracker</h2>:null
         }
         {
-          showLogin?<h2>Welcome To Your Sleep Tracker, {currentUser.name}!</h2>:null
+          showRecord?<h3>Welcome To Your Sleep Tracker, {currentUser.name}!</h3>:null
         }
         {
-          showLogin?<h2>Log in to track sleep</h2>:null
+          loginSuccess?<h4>Log in to track sleep</h4>:null
         }
+        </div>
         <div className='login_form'>
         {
           show?<NewUser handleNewUser={handleNewUser}/>:null
@@ -206,11 +208,12 @@ const logout = () => {
         }).map((sleep) => {
           return(
             <div className="container record" key={sleep.id}>
-            <h3>Date: {sleep.date}</h3>
-            <h3>Hours Slept: {sleep.hoursSlept}</h3>
-            <h3>Routine: {sleep.routine}</h3>
-            <h3>Quality of Sleep: {sleep.sleepQuality}</h3>
-            <h3>Notes: {sleep.notes}</h3>
+            <h5><span>Log Date</span> <br /> {sleep.date}</h5>
+            <h5><span>Hours Slept </span> <br /> {sleep.hoursSlept}</h5>
+            <h5><span>Routine </span> <br /> {sleep.routine}</h5>
+            <h5><span>Quality of Sleep</span> <br /> {sleep.sleepQuality}</h5>
+            <h5><span>Notes</span> <br /></h5> <h5 class="sleepNotes">{sleep.notes}</h5>
+            <hr/>
             <Edit handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep}/>
             <button onClick={() => {handleDelete(sleep
             )}}>
@@ -219,7 +222,6 @@ const logout = () => {
             </div>
           )
         })}
-
         </div>
         <br/>
         {showRecord?<button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
