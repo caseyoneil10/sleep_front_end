@@ -21,6 +21,7 @@ const Login = (props) => {
 				<input className="button" placeholder="Password" type="password" name="password" value={user.password} onChange={handleChange}></input>
 				<br/>
 				<input type="submit"></input>
+				{props.loginSuccess ? <button className="button" onClick={props.goBack}>Go Back</button> : null}
 			</form>
 		</div>
 	)

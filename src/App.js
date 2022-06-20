@@ -1,3 +1,6 @@
+//slepe proj
+
+
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Add from './components/Add'
@@ -46,7 +49,7 @@ const App = () => {
     setLoginHeader(true)
     setLoginSuccess(true)
   }
-  
+
   const goBack =() => {
     setLoginHeader(false)
     setShowLogin(false)
@@ -172,27 +175,25 @@ const logout = () => {
         {
           loginHeader?null:<h3>Create An Account! Log in and Track Your Sleep</h3>
         }
-
-
         {showLogin ? null : <button className='button' onClick={showPage}>Create Account</button>
         }
-          <button className='button' onClick={() => {
+          {showLogin ? null : <button className='button' onClick={() => {
             showloginAndHideCreate()
-          } }>Login</button> 
+          } }>Login</button>}
            {showRecord ? <><button className="button-primary" onClick={logout}>Log Out</button>
+               {showRecord ? <button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
             </> : null}
            </div>
         <div className="container">
             {showLogin ? <h2>Sleep Tracker</h2> : null}
-            {showRecord ? <h3>Welcome To Your Sleep Tracker, {currentUser.name}!</h3> : null}
-            {loginSuccess ? <h4>Log in to track sleep</h4> : null}
+            {showRecord ? <h4>Welcome To Your Sleep Tracker, {currentUser.name}!</h4> : null}
+            {loginSuccess ? <h5>Log in to track sleep</h5> : null}
           </div><div className='login_form'>
             {show ? <NewUser handleNewUser={handleNewUser} /> : null}
 
-            {loginSuccess ? <Login handleLogin={handleLogin} /> : null}
-            {loginSuccess ? <button onClick={goBack}>Go Back</button> : null}      
-            
-            {showRecord ? <h3>Add a New Sleep Record</h3> : null}
+            {loginSuccess ? <Login handleLogin={handleLogin} loginSuccess={ loginSuccess} goBack={goBack} /> : null}
+
+            {showRecord ? <h4>Add a New Sleep Record</h4> : null}
             {showRecord ? <Add user={user} handleCreate={handleCreate} /> : null}
 
             <div className="sleepfacts container ">
@@ -214,28 +215,28 @@ const logout = () => {
                       <h5><span>Quality of Sleep: <br /></span> {sleep.sleepQuality}</h5>
                       <h5><span>Sleep Diary:</span> <br /></h5>
                       <h6 class="sleepNotes">{sleep.notes}</h6>
-                      
+
                       <button className="button button-primary" onClick={() => {
                         handleDelete(sleep
                         )
                       } }>
                         Delete Sleep Record
                       </button>
-                      <hr /> 
+                      <hr />
                       <Edit handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep} />
 
-                      
+
                     </div>
                   </div>
                 </>
               )
             })}
           </div>
-        
-            {showRecord ? <button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
-          
+
+
+
           </>
-            
+
   )
 }
 

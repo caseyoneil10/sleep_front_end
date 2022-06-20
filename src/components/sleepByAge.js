@@ -61,16 +61,17 @@ const checkAge = () => {
     useEffect(() => {
         checkAge()
       }, [props.handleLogin])
-      
+
     return (
         <>
            <div class="sleepfacts">
-            <span>Sleep Facts</span>
+           <br/>
+            <h3>Sleep Facts</h3>
                 <hr />
                 <h5>{checkAgeMessage}</h5>
            </div>
-          
-           
+
+
         </>
     )
 }
