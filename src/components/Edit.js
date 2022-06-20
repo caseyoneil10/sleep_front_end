@@ -44,12 +44,12 @@ const Edit = (props) => {
 						<br />
 						<br />
 						<div className="row">
-						<div className="five columns">
-							<span>Quality of Sleep (1-5)</span>
+						<div className="four columns">
+							<span>Quality of Sleep (1-5)</span><br />
 							<input type="number" name="sleepQuality" min="1" max="5" value={sleep.sleepQuality} onChange={handleChange}></input>
 						</div>
 
-						<div className="six columns">
+						<div className="five columns">
 							<span>Sleep Diary</span><br />
 							<textarea required type="text" value={sleep.notes} name="notes" onChange={handleChange}></textarea>
 						</div>

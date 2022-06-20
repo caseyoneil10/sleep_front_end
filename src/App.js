@@ -210,7 +210,7 @@ const logout = () => {
           }).map((sleep) => {
             return(
               <>
-              <div className="row u-pull-left post" >
+              <div className="row u-pull-right post" >
               <div className="container record five columns u-pull-left" key={sleep.id}>
                 <h3><span>Log Date:</span> {sleep.date}</h3>
                 <h5><span>Hours Slept: </span> {sleep.hoursSlept}</h5>
@@ -219,7 +219,7 @@ const logout = () => {
                 <h5><span>Sleep Diary</span> </h5>
                 <h6 class="sleepNotes">{sleep.notes}</h6>
               </div>
-              <div className="editSleepPost seven columns u-pull-right">
+              <div className="editSleepPost six columns u-pull-right">
                   <Edit  handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep} />
                   
                   <button onClick={() => {

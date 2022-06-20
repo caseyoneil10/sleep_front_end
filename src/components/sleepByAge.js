@@ -69,21 +69,7 @@ const checkAge = () => {
                 <hr />
                 <h5>{checkAgeMessage}</h5>
            </div>
-           <div class="sleepfacts">
-            <span>Sleep Facts</span>
-                <hr />
-                <h5>{checkAgeMessage}</h5>
-           </div>
-           <div class="sleepfacts">
-            <span>Sleep Facts</span>
-                <hr />
-                <h5>{checkAgeMessage}</h5>
-           </div>
-           <div class="sleepfacts">
-            <span>Sleep Facts</span>
-                <hr />
-                <h5>{checkAgeMessage}</h5>
-           </div>
+          
            
         </>
     )
