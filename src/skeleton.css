@@ -34,12 +34,73 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+ }
 .column,
 .columns {
   width: 100%;
   float: left;
   box-sizing: border-box; }
+.sleepNotes{
+  width: 300px;
+ 
+  border-radius: 15px;
+  text-align:center;
+  overflow-wrap:normal;
+  padding: 3px;
+  margin: auto;
+}
+.sleepfacts{
+  border-radius: 20px;
+  
+  text-align: center;
+  margin-left: 2em;
+  height: 100%;
+  margin-bottom: 2em;
+  padding: 1em;
+}
+span {
+  font-weight:bold;
+}
+.addPost{
+  width:max-content;
+  text-align:center;
+  padding: 2em 0em 3em 1em;
+  margin:auto;
+  border-radius: 20px;
+  margin-bottom: 1em;
+}
+.editSleepPost{
+  width:max-content;
+  text-align:center;
+  
+  height:400px;
+
+  border-radius: 20px;
+  
+}
+.post{
+  
+  margin-right: 8%;
+  margin-bottom:1em;
+}
+.hoursSlept{
+  width: fit-content;
+}
+.submitBtn{
+  padding-top: 5px;
+  background-color: #555;
+}
+.record{
+
+  margin: 0em 0em 2em 2em;
+  background-color: rgb(255,236,163);
+  color:#333;
+  border-radius: 20px;
+  text-align: center;
+  height:400px;
+  /* padding: ; */
+}
 
 /* For devices larger than 400px */
 @media (min-width: 400px) {
@@ -125,7 +186,13 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #222; }
+  color: rgba(0,60,103);
+  /* background-color: rgb(156,170,232);  */
+}
+  textarea{
+    margin: 0 auto;
+  }
+  
 
 
 /* Typography
@@ -135,8 +202,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   font-weight: 300; }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
-h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
-h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; text-align: center }
+h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; text-align: center;}
 h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
 h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
 h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
@@ -186,7 +253,8 @@ input[type="button"] {
   border-radius: 4px;
   border: 1px solid #bbb;
   cursor: pointer;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin: 1em; }
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
@@ -207,7 +275,8 @@ input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
   background-color: #f03232;
-  border-color: #33C3F0; }
+  border-color: #33C3F0;
+  }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -240,7 +309,8 @@ select {
   border: 1px solid #D1D1D1;
   border-radius: 4px;
   box-shadow: none;
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+  max-width:fit-content}
 /* Removes awkward default styles on some inputs for iOS */
 input[type="email"],
 input[type="number"],
@@ -355,7 +425,16 @@ ul,
 ol,
 form {
   margin-bottom: 2.5rem; }
-
+.deleteBtn{
+  position: fixed;
+  bottom: 0;
+  text-align:center;
+  margin: 0 auto;
+}
+.addPost{
+  text-align:center;
+  border: 1px purple solid;
+}
 
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

@@ -5,6 +5,9 @@ import Edit from './components/Edit'
 import Login from './components/Login'
 import NewUser from './components/NewUser'
 import SleepByAge from './components/sleepByAge'
+import './index.css'
+import './skeleton.css'
+import './normalize.css'
 
 const App = () => {
   const [sleepData, setSleepData] = useState([])
@@ -49,6 +52,7 @@ const App = () => {
     setShowLogin(false)
     setLoginSuccess(false)
   }
+
 
 // ========GET SLEEP RECORDS=======
 
@@ -111,6 +115,7 @@ const App = () => {
     setShowRecord(true)
     setLoginSuccess(false)
     console.log(response.data)
+
     }
   })
 }
@@ -160,31 +165,33 @@ const logout = () => {
 
   return (
     <>
-      <div id='login_page'>
+      <div className='container'>
         {
-          loginHeader?null:<h1>The Sleep App</h1>
+          loginHeader?null:<h2>The Sleep App</h2>
         }
         {
-          loginHeader?null:<h2>Create An Account to Log in and Track Sleep</h2>
+          loginHeader?null:<h3>Create An Account! Log in and Track Your Sleep</h3>
         }
-        {
-          showLogin ? null : <button className='create_account' onClick={showPage}>Create Account</button>
-        }
-        {     
+
+
+        {showLogin ? null : <><button className='button' onClick={showPage}>Create Account</button>
+
         <button className='button' onClick={()=>{
           showloginAndHideCreate()
         }}>Login</button>  
         }
       </div>
+      <div className="container">
         {
-          showLogin?<h1>Sleep Tracker</h1>:null
+          showLogin?<h2>Sleep Tracker</h2>:null
         }
         {
-          showLogin?<h2>Welcome To Your Sleep Tracker, {currentUser.name}!</h2>:null
+          showRecord?<h3>Welcome To Your Sleep Tracker, {currentUser.name}!</h3>:null
         }
         {
-          showLogin?<h2>Log in to track sleep</h2>:null
+          loginSuccess?<h4>Log in to track sleep</h4>:null
         }
+        </div>
         <div className='login_form'>
         {
           show?<NewUser handleNewUser={handleNewUser}/>:null
@@ -205,34 +212,48 @@ const logout = () => {
           </> : null
         }
         {
-          showRecord?<h3>Add new sleep record</h3>:null
+          showRecord?<h3>Add a New Sleep Record</h3>:null
         }
         {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
-        {showRecord?<SleepByAge user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
-        {sleepData.filter((posts) => {
-          if (posts.username === user.username) {
-            return posts }
-        }).map((sleep) => {
-          return(
-            <div key={sleep.id}>
-            <h3>Date: {sleep.date}</h3>
-            <h3>Hours Slept: {sleep.hoursSlept}</h3>
-            <h3>Routine: {sleep.routine}</h3>
-            <h3>Quality of Sleep: {sleep.sleepQuality}</h3>
-            <h3>Notes: {sleep.notes}</h3>
-            <Edit handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep}/>
-            <button onClick={() => {handleDelete(sleep
-            )}}>
-            Delete Sleep Record
-            </button>
-            </div>
+        <div className="sleepfacts container three columns">
+          {showRecord?<SleepByAge  user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
+        </div>
+          {sleepData.filter((posts) => {
+            if (posts.username === user.username) {
+              return posts }
+          }).map((sleep) => {
+            return(
+              <>
+              <div className="row u-pull-right post" >
+              <div className="container record five columns u-pull-left" key={sleep.id}>
+                <h3><span>Log Date:</span> {sleep.date}</h3>
+                <h5><span>Hours Slept: </span> {sleep.hoursSlept}</h5>
+                <h5><span>Routine: </span> {sleep.routine}</h5>
+                <h5><span>Quality of Sleep: </span> {sleep.sleepQuality}</h5>
+                <h5><span>Sleep Diary</span> </h5>
+                <h6 class="sleepNotes">{sleep.notes}</h6>
+              </div>
+              <div className="editSleepPost six columns u-pull-right">
+                  <Edit  handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep} />
+                  
+                  <button onClick={() => {
+                    handleDelete(sleep
+                    )
+                  } }>
+                    Delete Sleep Record
+                  </button>
+                </div>
+                </div>
+                </>
           )
         })}
         </div>
         <br/>
-        {showRecord?<button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
+        <div className="deleteBtn">
+            {showRecord?<button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
+        </div>
     </>
   )
 }

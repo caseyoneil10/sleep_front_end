@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.newUser {
+  margin-top: 2em;
+}
+
+.newUserButton:hover {
+  cursor: text;
+}
