@@ -201,7 +201,7 @@ const logout = () => {
         {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
-        <div className="container sleepfacts u-pull-left two columns">
+        <div className="sleepfacts container three columns">
           {showRecord?<SleepByAge  user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
         </div>
           {sleepData.filter((posts) => {
@@ -209,20 +209,28 @@ const logout = () => {
               return posts }
           }).map((sleep) => {
             return(
-        <div className="container record u-pull-right ten columns" key={sleep.id}>
-              <h5><span>Log Date</span> <br /> {sleep.date}</h5>
-              <h5><span>Hours Slept </span> <br /> {sleep.hoursSlept}</h5>
-              <h5><span>Routine </span> <br /> {sleep.routine}</h5>
-              <h5><span>Quality of Sleep</span> <br /> {sleep.sleepQuality}</h5>
-              <h5><span>Sleep Diary</span> <br /></h5> <h6 class="sleepNotes">{sleep.notes}</h6>
-          <hr/>
-            <Edit handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep}/>
-            <br />
-            <button onClick={() => {handleDelete(sleep
-            )}}>
-            Delete Sleep Record
-            </button>
-        </div>
+              <>
+              <div className="row u-pull-left post" >
+              <div className="container record five columns u-pull-left" key={sleep.id}>
+                <h3><span>Log Date:</span> {sleep.date}</h3>
+                <h5><span>Hours Slept: </span> {sleep.hoursSlept}</h5>
+                <h5><span>Routine: </span> {sleep.routine}</h5>
+                <h5><span>Quality of Sleep: </span> {sleep.sleepQuality}</h5>
+                <h5><span>Sleep Diary</span> </h5>
+                <h6 class="sleepNotes">{sleep.notes}</h6>
+              </div>
+              <div className="editSleepPost seven columns u-pull-right">
+                  <Edit  handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep} />
+                  
+                  <button onClick={() => {
+                    handleDelete(sleep
+                    )
+                  } }>
+                    Delete Sleep Record
+                  </button>
+                </div>
+                </div>
+                </>
           )
         })}
         </div>

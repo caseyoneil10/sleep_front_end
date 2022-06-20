@@ -42,20 +42,21 @@
   float: left;
   box-sizing: border-box; }
 .sleepNotes{
-  width: fit-content;
+  width: 300px;
   border: 1px black solid;
   border-radius: 15px;
   text-align:center;
-  margin:auto;
-  /* padding: 3px;
-  margin: 0% 10%; */
+  overflow-wrap:normal;
+  padding: 3px;
+  margin: auto;
 }
-/* .sleepfacts{
-  padding: 1%; 
+.sleepfacts{
+  border-radius: 20px;
   border: 1px grey solid;
   text-align: center;
-  width: 20%;
-} */
+  margin-right: 1em;
+  height: 100%;
+}
 span {
   font-weight:bold;
 }
@@ -67,13 +68,18 @@ span {
   border-radius: 20px;
   margin-bottom: 2em;
 }
-.editPost{
+.editSleepPost{
   width:max-content;
   text-align:center;
-  padding: 2em 0em 3em 1em;
-  border: 1px red solid;
+  
+  height:400px;
+  border: 1px solid green;
   border-radius: 20px;
-  margin:auto;
+  
+}
+.post{
+  border: 2px dashed palegreen;
+  margin-left: 7%;
 }
 .hoursSlept{
   width: fit-content;
@@ -84,15 +90,16 @@ span {
 }
 .record{
   border:1px orange solid;
-  margin-bottom: 2em;
+  margin: 0em 0em 2em 2em;
   background-color: rgb(255,236,163);
   color:#333;
   border-radius: 20px;
   text-align: center;
- 
+  height:400px;
+  /* padding: ; */
 }
-.record h5{
-  text-indent: 1em;
+input{
+
 }
 /* For devices larger than 400px */
 @media (min-width: 400px) {
@@ -418,8 +425,8 @@ ol,
 form {
   margin-bottom: 2.5rem; }
 .deleteBtn{
-  position:sticky;
-
+  position: fixed;
+  bottom: 0;
   text-align:center;
   margin: 0 auto;
 }

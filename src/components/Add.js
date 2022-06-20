@@ -37,7 +37,7 @@ const Add = (props) => {
 				
 			<div className="six columns">
 			<span>Sleep Routine</span>	<select className="" required name="routine" value={sleep.routine} onChange={handleChange}>
-					<option value='select an option'>Select an Option From Below</option>
+					<option value='select an option'>Select an Option </option>
 					<option value='none'>None</option>
 					<option value='Exercise Before Bed'>Exercise Before Bed</option>
 					<option value='Meditation/Mindfulness'>Meditation/Mindfulness</option>
