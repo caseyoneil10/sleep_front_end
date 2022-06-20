@@ -41,24 +41,24 @@
 .columns {
   width: 100%;
   float: left;
-  box-sizing: border-box; }
+  
+  box-sizing: border-box;
+  margin: auto; }
 .sleepNotes{
-  width: 300px;
+  width: 40%;
  
   border-radius: 15px;
   text-align:center;
-  overflow-wrap:normal;
-  padding: 3px;
-  margin: auto;
+  
+  /* padding: 3px; */
+  margin: 0 auto;
 }
 .sleepfacts{
   border-radius: 20px;
-  
-  text-align: center;
-  margin-left: 2em;
-  height: 100%;
+ 
+  text-align:left;
   margin-bottom: 2em;
-  padding: 1em;
+  /* padding: 1em; */
 }
 span {
   font-weight:bold;
@@ -74,16 +74,18 @@ span {
 .editSleepPost{
   width:max-content;
   text-align:center;
-  
+  background-color:rgba(119, 119, 119, .2);
   height:400px;
-
+  border: 1px solid green;
   border-radius: 20px;
   
 }
 .post{
-  
-  margin-right: 8%;
-  margin-bottom:1em;
+  margin: 2em;
+  background-color: rgba(119, 119, 119, .5);
+  border-radius: 20px;
+  height: 1250px;
+  width: 300px;
 }
 .hoursSlept{
   width: fit-content;
@@ -94,13 +96,12 @@ span {
 }
 .record{
 
-  margin: 0em 0em 2em 2em;
-  background-color: rgb(255,236,163);
+  /* margin: 1em; */
+
   color:#333;
   border-radius: 20px;
   text-align: center;
-  height:400px;
-  /* padding: ; */
+  height:70em;
 }
 
 /* For devices larger than 400px */
@@ -435,6 +436,11 @@ form {
 .addPost{
   text-align:center;
   border: 1px purple solid;
+}
+.editBtn{
+  background-color: goldenrod;
+  color:#33C3F0;
+  border: 1px black solid;
 }
 
 /* Utilities

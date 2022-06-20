@@ -17,18 +17,18 @@ const Edit = (props) => {
 					<form className="editPost" onSubmit={handleSubmit}>
 					<div className="">
 					
-					<div className="three columns">
-					<span>Log Date</span>
+					<div className="">
+					<label>Log Date</label>
 						<input type="date" name="date" value={sleep.date} onChange={handleChange}></input>
 					</div>
 					
-					<div className="three columns">	
-					<span>Hours Slept</span> <br />
+					<div className="">	
+					<label>Hours Slept</label>
 						<input type="number" min="0" max="24" name="hoursSlept" value={sleep.hoursSlept} onChange={handleChange}></input>
 					</div>
 					
-					<div className="six columns">
-					<span>Sleep Routine</span>
+					<div className="">
+					<label>Sleep Routine</label>
 						<select name="routine" value={sleep.routine} onChange={handleChange}>
 							<option value='select an option'>Select an Option</option>
 							<option value='none'>None</option>
@@ -40,23 +40,22 @@ const Edit = (props) => {
 						</select>
 						</div>
 						</div>
-						<br />
-						<br />
-						<br />
+					
 						<div className="row">
-						<div className="four columns">
-							<span>Quality of Sleep (1-5)</span><br />
+						<div className="">
+							<label>Quality of Sleep (1-5)</label>
 							<input type="number" name="sleepQuality" min="1" max="5" value={sleep.sleepQuality} onChange={handleChange}></input>
 						</div>
 
-						<div className="five columns">
-							<span>Sleep Diary</span><br />
+						
+							<label>Sleep Diary</label>
 							<textarea required type="text" value={sleep.notes} name="notes" onChange={handleChange}></textarea>
-						</div>
+						
 						</div>
 						
 						
-						<input type="submit"></input>
+						<input  className="button-primary editBtn" type="submit" value="submit input"></input>
+						
 						
 					</form>
 			
