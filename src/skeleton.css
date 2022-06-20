@@ -41,26 +41,58 @@
   width: 100%;
   float: left;
   box-sizing: border-box; }
-.record{
-  background-color: yellow;
-}
 .sleepNotes{
-  width: 70%;
+  width: fit-content;
   border: 1px black solid;
   border-radius: 15px;
   text-align:center;
-  padding: 3px;
-  margin: 0% 10%;
+  margin:auto;
+  /* padding: 3px;
+  margin: 0% 10%; */
 }
-.sleepfacts{
-  width: 10%;
-  margin: 0% 5%;
-  padding: 10px;
+/* .sleepfacts{
+  padding: 1%; 
   border: 1px grey solid;
   text-align: center;
-}
+  width: 20%;
+} */
 span {
   font-weight:bold;
+}
+.addPost{
+  width:max-content;
+  text-align:center;
+  padding: 2em 0em 3em 1em;
+  margin:auto;
+  border-radius: 20px;
+  margin-bottom: 2em;
+}
+.editPost{
+  width:max-content;
+  text-align:center;
+  padding: 2em 0em 3em 1em;
+  border: 1px red solid;
+  border-radius: 20px;
+  margin:auto;
+}
+.hoursSlept{
+  width: fit-content;
+}
+.submitBtn{
+  padding-top: 5px;
+  background-color: #555;
+}
+.record{
+  border:1px orange solid;
+  margin-bottom: 2em;
+  background-color: rgb(255,236,163);
+  color:#333;
+  border-radius: 20px;
+  text-align: center;
+ 
+}
+.record h5{
+  text-indent: 1em;
 }
 /* For devices larger than 400px */
 @media (min-width: 400px) {
@@ -146,8 +178,12 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* background-color: #b08ef7; */
-  color: #222; }
+  color: rgba(0,60,103);
+  /* background-color: rgb(156,170,232);  */
+}
+  textarea{
+    margin: 0 auto;
+  }
   
 
 
@@ -158,8 +194,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   font-weight: 300; }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
-h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
-h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; text-align: center }
+h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; text-align: center;}
 h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
 h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
 h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
@@ -231,7 +267,8 @@ input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
   background-color: #f03232;
-  border-color: #33C3F0; }
+  border-color: #33C3F0;
+  }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -380,7 +417,16 @@ ul,
 ol,
 form {
   margin-bottom: 2.5rem; }
+.deleteBtn{
+  position:sticky;
 
+  text-align:center;
+  margin: 0 auto;
+}
+.addPost{
+  text-align:center;
+  border: 1px purple solid;
+}
 
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

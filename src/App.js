@@ -163,7 +163,7 @@ const logout = () => {
           loginHeader?null:<h2>The Sleep App</h2>
         }
         {
-          loginHeader?null:<h3>Create An Account to Log in and Track Sleep</h3>
+          loginHeader?null:<h3>Create An Account! Log in and Track Your Sleep</h3>
         }
 
         {showLogin ? null : <><button className='button' onClick={showPage}>Create Account</button>
@@ -196,35 +196,40 @@ const logout = () => {
           </> : null
         }
         {
-          showRecord?<h3>Add new sleep record</h3>:null
+          showRecord?<h3>Add a New Sleep Record</h3>:null
         }
         {
           showRecord?<Add user={user} handleCreate={handleCreate}/>:null
         }
-        {showRecord?<SleepByAge className="container sleepfacts" user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
-        {sleepData.filter((posts) => {
-          if (posts.username === user.username) {
-            return posts }
-        }).map((sleep) => {
-          return(
-            <div className="container record" key={sleep.id}>
-            <h5><span>Log Date</span> <br /> {sleep.date}</h5>
-            <h5><span>Hours Slept </span> <br /> {sleep.hoursSlept}</h5>
-            <h5><span>Routine </span> <br /> {sleep.routine}</h5>
-            <h5><span>Quality of Sleep</span> <br /> {sleep.sleepQuality}</h5>
-            <h5><span>Notes</span> <br /></h5> <h5 class="sleepNotes">{sleep.notes}</h5>
-            <hr/>
+        <div className="container sleepfacts u-pull-left two columns">
+          {showRecord?<SleepByAge  user={user} handleLogin={handleLogin} currentUserAge={currentUserAge} sleepData={sleepData}/> : null}
+        </div>
+          {sleepData.filter((posts) => {
+            if (posts.username === user.username) {
+              return posts }
+          }).map((sleep) => {
+            return(
+        <div className="container record u-pull-right ten columns" key={sleep.id}>
+              <h5><span>Log Date</span> <br /> {sleep.date}</h5>
+              <h5><span>Hours Slept </span> <br /> {sleep.hoursSlept}</h5>
+              <h5><span>Routine </span> <br /> {sleep.routine}</h5>
+              <h5><span>Quality of Sleep</span> <br /> {sleep.sleepQuality}</h5>
+              <h5><span>Sleep Diary</span> <br /></h5> <h6 class="sleepNotes">{sleep.notes}</h6>
+          <hr/>
             <Edit handleUpdate={handleUpdate} sleepData={sleepData} sleep={sleep}/>
+            <br />
             <button onClick={() => {handleDelete(sleep
             )}}>
             Delete Sleep Record
             </button>
-            </div>
+        </div>
           )
         })}
         </div>
         <br/>
-        {showRecord?<button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
+        <div className="deleteBtn">
+            {showRecord?<button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
+        </div>
     </>
   )
 }
