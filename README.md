@@ -47,8 +47,13 @@ Helping users track their sleep. They can enter the amount of sleep they get eac
 
 ## Unsolved Problems
 
- - 
+ - Styling is ugly.
+ - See future goals.
 
 ## Future Goals
 
- - 
+ - Include additional components using individual user data and comparisons with global user data.
+ - Utilizing graphs to display components.
+ - Better styling.
+ - Using React router.
+ - Trying Sass. 
