@@ -233,7 +233,7 @@ const logout = () => {
             })}
           </div>
 
-
+            {showRecord ? <button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
 
           </>
 
