@@ -43,7 +43,12 @@ const App = () => {
     setLoginHeader(true)
     setLoginSuccess(true)
   }
-
+  
+  const goBack =() => {
+    setLoginHeader(false)
+    setShowLogin(false)
+    setLoginSuccess(false)
+  }
 
 // ========GET SLEEP RECORDS=======
 
@@ -162,12 +167,14 @@ const logout = () => {
         {
           loginHeader?null:<h2>Create An Account to Log in and Track Sleep</h2>
         }
-
-        {showLogin ? null : <><button className='create_account' onClick={showPage}>Create Account</button>
+        {
+          showLogin ? null : <button className='create_account' onClick={showPage}>Create Account</button>
+        }
+        {     
         <button className='button' onClick={()=>{
           showloginAndHideCreate()
-        }}>Login</button> </> }
-
+        }}>Login</button>  
+        }
       </div>
         {
           showLogin?<h1>Sleep Tracker</h1>:null
@@ -185,6 +192,13 @@ const logout = () => {
 
         {
           loginSuccess?<Login handleLogin={handleLogin}/>:null
+        }
+        {
+          loginSuccess?<button onClick={goBack}>Go Back</button>:null
+        }
+        {
+          showRecord?<><button onClick={logout}>Log Out</button>
+          <button onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button></> : null
         }
         {
           showRecord?<><button className="button-primary" onClick={logout}>Log Out</button>
@@ -216,7 +230,6 @@ const logout = () => {
             </div>
           )
         })}
-
         </div>
         <br/>
         {showRecord?<button className='button-primary' onClick={handleFindDeletedPosts}>Delete User Account And All User Data</button> : null}
